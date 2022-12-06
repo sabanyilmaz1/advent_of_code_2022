@@ -4,19 +4,14 @@ const sampleInput = readFileSync("day06.txt", { encoding: "utf-8" })
   .trim()
   .split("");
 
-// const sampleInput = `
-// zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw
-// `
-//   .trim()
-//   .split("");
+const isUnique = (array) => {
+  return new Set(array).size === array.length;
+};
 
 const part1 = () => {
   for (let i = 0; i < sampleInput.length - 3; i++) {
     const fourLetters = sampleInput.slice(i, i + 4);
-    // verifier si tous les elements de fourLetters sont differents
-    const isDifferent = fourLetters.every(
-      (el, i, arr) => arr.indexOf(el) === i
-    );
+    const isDifferent = isUnique(fourLetters);
     if (isDifferent) {
       return i + 3 + 1;
     }
@@ -25,11 +20,8 @@ const part1 = () => {
 
 const part2 = () => {
   for (let i = 0; i < sampleInput.length - 13; i++) {
-    const fourLetters = sampleInput.slice(i, i + 14);
-    // verifier si tous les elements de fourLetters sont differents
-    const isDifferent = fourLetters.every(
-      (el, i, arr) => arr.indexOf(el) === i
-    );
+    const fourteenLetters = sampleInput.slice(i, i + 14);
+    const isDifferent = isUnique(fourteenLetters);
     if (isDifferent) {
       return i + 13 + 1;
     }
